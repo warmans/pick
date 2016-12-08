@@ -53,7 +53,7 @@ func pick(input string, record, data []string) []string {
 		}
 	case INPUT_TYPE_QUERYSTRING:
 		for newIndex, pickIndex := range data {
-			query, err := url.ParseQuery(strings.Join(record, ","))
+			query, err := url.ParseQuery(strings.TrimLeft(strings.Join(record, ","), "?"))
 			if err != nil {
 				panic(err)
 			}
